@@ -1,4 +1,10 @@
 # xiangseguige
 自制香色闺阁书源  
 `https://raw.githubusercontent.com/charley008/xiangseguige/refs/heads/main/resources.txt`  
-30读书https://www.30dushu.com
+1. 30读书 `https://www.30dushu.com`  
+2. 笔趣阁hk `https://www.biquge.hk`  
+3. 顶点小说网 `https://www.2dingdian.net`  
+4. 精华书阁 `https://m.jhsssd.com`  
+5. 梦想家文学 `http://www.mxjtedu.com`  
+
+
