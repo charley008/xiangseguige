@@ -1,3 +1,3 @@
 # xiangseguige
-自制香色闺阁书源
-https://github.com/charley008/xiangseguige/raw/refs/heads/main/
+自制香色闺阁书源  
+https://raw.githubusercontent.com/charley008/xiangseguige/refs/heads/main/resources.txt
