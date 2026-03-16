@@ -1,5 +1,5 @@
-https://www.4738.org/xiangse/dingdian.xbs
-https://www.4738.org/xiangse/mengxiangjia.xbs
-https://www.4738.org/xiangse/30dushu.xbs
-https://www.4738.org/xiangse/biqugehk.xbs
-https://www.4738.org/xiangse/jinghuage.xbs
+https://github.com/charley008/xiangseguige/raw/refs/heads/main/dingdian.xbs
+https://github.com/charley008/xiangseguige/raw/refs/heads/main/mengxiangjia.xbs
+https://github.com/charley008/xiangseguige/raw/refs/heads/main/30dushu.xbs
+https://github.com/charley008/xiangseguige/raw/refs/heads/main/biqugehk.xbs
+https://github.com/charley008/xiangseguige/raw/refs/heads/main/jinghuage.xbs
