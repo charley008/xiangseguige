@@ -1,0 +1,126 @@
+{
+    "顶点小说网": {
+        "chapterContent": {
+            "actionID": "chapterContent",
+            "content": "\/\/*[@id='booktxt']",
+            "validConfig": "",
+            "moreKeys": {
+                "maxPage": 10
+            },
+            "host": "https:\/\/www.2dingdian.net",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "nextPageUrl": "\/\/a[contains(text(),'下一页')]\/@href"
+        },
+        "enable": 1,
+        "bookDetail": {
+            "actionID": "bookDetail",
+            "validConfig": "",
+            "status": "\/\/meta[contains(@property, 'status')]\/@content",
+            "lastChapterTitle": "\/\/meta[contains(@property, 'chapter_name')]\/@content",
+            "host": "https:\/\/www.2dingdian.net",
+            "cat": "\/\/meta[contains(@property, 'category')]\/@content",
+            "cover": "\/\/meta[contains(@property, 'image')]\/@content",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "desc": "\/\/meta[contains(@property, 'description')]\/@content"
+        },
+        "bookWorld": {
+            "分类": {
+                "author": "\/\/*[@class='s4']",
+                "lastChapterTitle": "\/\/*[@class='s3']\/\/a",
+                "responseFormatType": "html",
+                "bookName": "\/\/*[@class='s2']\/\/a",
+                "host": "https:\/\/www.2dingdian.net",
+                "requestInfo": "@js:\nreturn config.host + '\/class\/' + params.filters.type + '_' + params.pageIndex + '.html';",
+                "actionID": "bookWorld",
+                "detailUrl": "\/\/*[@class='s2']\/\/a\/@href",
+                "moreKeys": {
+                    "pageSize": 30,
+                    "requestFilters": [
+                        {
+                            "key": "type",
+                            "items": [
+                                {
+                                    "title": "玄幻",
+                                    "value": "1"
+                                },
+                                {
+                                    "title": "武侠",
+                                    "value": "2"
+                                },
+                                {
+                                    "title": "都市",
+                                    "value": "3"
+                                },
+                                {
+                                    "title": "历史",
+                                    "value": "4"
+                                },
+                                {
+                                    "title": "侦探",
+                                    "value": "5"
+                                },
+                                {
+                                    "title": "游戏",
+                                    "value": "6"
+                                },
+                                {
+                                    "title": "科幻",
+                                    "value": "7"
+                                },
+                                {
+                                    "title": "恐怖",
+                                    "value": "8"
+                                },
+                                {
+                                    "title": "女频",
+                                    "value": "9"
+                                },
+                                {
+                                    "title": "其他",
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "cover": "\/\/*[@class='s2']\/\/a\/@href || @js:\nlet match = result.match(\/(\\d+)\\\/?$\/);\nif(match){\n  let id = match[1] - 18;\n  let iid = parseInt(id \/ 1000);\n  return 'https:\/\/img.2dingdian.net\/image\/' + iid + '\/' + id + '\/' + id + 's.jpg';\n} return '';",
+                "parserID": "DOM",
+                "list": "\/\/*[@class='l']\/\/li",
+                "validConfig": ""
+            }
+        },
+        "sourceUrl": "https:\/\/www.2dingdian.net",
+        "sourceType": "text",
+        "weight": "9999",
+        "sourceName": "顶点小说网",
+        "miniAppVersion": "2.53.2",
+        "lastModifyTime": "1773626771.408989",
+        "searchBook": {
+            "cat": "\/\/em[last()]",
+            "author": "\/\/*[@class='btm']\/a",
+            "responseFormatType": "html",
+            "bookName": "\/\/dt\/a",
+            "desc": "\/\/dd",
+            "host": "https:\/\/www.2dingdian.net",
+            "requestInfo": "@js:\nlet url = config.host + '\/searchsss\/';\nlet hp = {'searchkey': params.keyWord};\nreturn {'url': url, 'POST': true, 'httpParams': hp};",
+            "actionID": "searchBook",
+            "detailUrl": "\/\/dt\/a\/@href",
+            "cover": "\/\/img\/@data-original",
+            "validConfig": "",
+            "parserID": "DOM",
+            "list": "\/\/*[@class='item']"
+        },
+        "chapterList": {
+            "actionID": "chapterList",
+            "validConfig": "",
+            "title": "\/\/a",
+            "host": "https:\/\/www.2dingdian.net",
+            "list": "\/\/div[@id='list']\/\/a[position()>8]",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "url": "\/\/a\/@href"
+        }
+    }
+}

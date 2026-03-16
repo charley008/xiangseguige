@@ -1,0 +1,71 @@
+  {
+    "笔趣阁hk": {
+      "sourceName": "笔趣阁hk",
+      "sourceUrl": "https:\/\/www.biquge.hk",
+      "sourceType": "text",
+      "weight": "100",
+      "enable": 1,
+      "searchBook": {
+        "actionID": "searchBook",
+        "validConfig": "",
+        "requestInfo": "https:\/\/www.biquge.hk\/search\/result.html?searchtype=novelname&searchkey=%@keyWord",
+        "parserID": "DOM",
+        "responseFormatType": "html",
+        "host": "https://www.biquge.hk",
+        "list": "\/\/ul[contains(@class,'librarylist')]\/li",
+        "bookName": "\/\/span[1]\/a",
+        "author": "\/\/span[2]\/a",
+        "cover": "\/\/img/@src",
+        "desc": "\/\/p[contains(@class,'intro')]",
+        "detailUrl": "\/\/a[@class='novelname']/@href"
+      },
+      "bookDetail": {
+        "actionID": "bookDetail",
+        "validConfig": "",
+        "parserID": "DOM",
+        "responseFormatType": "html",
+        "host": "https:\/\/www.biquge.hk",
+        "cover": "\/\/div[contains(@class,'novelinfo-r')]\/\/img\/@src",
+        "desc": "\/\/div[contains(@class,'novelintro')]\/\/p",
+        "cat": "\/\/div[contains(@class,'novelinfo')]\/\/li[17]\/a",
+        "author": "\/\/div[contains(@class,'novelinfo')]//li[19]\/a",
+        "lastChapterTitle": "\/\/div[contains(@class,'novelinfo')]\/\/li[24]\/a"
+      },
+      "chapterList": {
+        "actionID": "chapterList",
+        "validConfig": "",
+        "parserID": "DOM",
+        "responseFormatType": "html",
+        "host": "https:\/\/www.biquge.hk",
+        "list": "\/\/ul[contains(@class,'dirlist')]\/li",
+        "title": "\/\/a\/@title",
+        "url": "\/\/a\/@href"
+        },
+      "chapterContent": {
+        "actionID": "chapterContent",
+        "validConfig": "",
+        "parserID": "DOM",
+        "responseFormatType": "html",
+        "host": "https:\/\/www.biquge.hk",
+        "content": "\/\/div[@id='chaptercontent']"
+      },
+      "bookWorld": {
+        "分类排行": {
+          "actionID": "bookWorld",
+          "validConfig": "",
+          "parserID": "DOM",
+          "responseFormatType": "html",
+          "host": "https:\/\/www.biquge.hk",
+          "requestInfo": "@js:\nreturn config.host + params.filters.cat.replace('{{page}}', params.pageIndex);",
+          "list": "\/\/ul[contains(@class,'librarylist')]\/li",
+          "bookName": "\/\/span[1]\/a",
+          "author": "\/\/span[2]\/a",
+          "detailUrl": "\/\/span[1]\/a\/@href",
+          "moreKeys": {
+            "pageSize": 20,
+            "requestFilters": "cat\n 玄幻小说::\/category\/xuanhuan\/{{page}}.html\n 修真小说::\/category\/xiuzhen\/{{page}}.html\n 都市小说::\/category\/dushi\/{{page}}.html\n 历史小说::\/category\/lishi\/{{page}}.html\n 网游小说::\/category\/wangyou\/{{page}}.html\n 科幻小说::\/category\/kehuan\/{{page}}.html\n 言情小说::\/category\/yanqing\/{{page}}.html\n 其他小说::\/category\/qita\/{{page}}.html\n 总排行榜::\/top\/allvisit\/{{page}}.html\n 月排行榜::\/top\/monthvisit\/{{page}}.html\n 周排行榜::\/top\/weekvisit\/{{page}}.html\n 总推荐榜::\/top/allvote\/{{page}}.html\n 月推荐榜::\/top\/monthvote\/{{page}}.html\n 周推荐榜::\/top\/weekvote\/{{page}}.html\n 最近更新::\/top\/lastupdate\/{{page}}.html\n 全本小说::\/over\/{{page}}.html"
+          }
+        }
+      }
+    }
+} 

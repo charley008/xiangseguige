@@ -1,0 +1,76 @@
+{
+  "梦想家文学": {
+    "sourceName": "梦想家文学",
+    "sourceUrl": "http:\/\/www.mxjtedu.com",
+    "sourceType": "text",
+    "weight": "9999",
+    "enable": 1,
+    "searchBook": {
+      "actionID": "searchBook",
+      "validConfig": "",
+      "requestInfo": "http:\/\/www.mxjtedu.com\/search.php?keyWord=%@keyWord",
+      "parserID": "DOM",
+      "responseFormatType": "html",
+      "host": "http:\/\/www.mxjtedu.com",
+      "list": "\/\/*[contains(@class,'txt-list-row5')]\/\/li[position()>1]",
+      "bookName": "\/\/*[contains(@class,'s2')]",
+      "author": "\/\/*[contains(@class,'s4')]",
+      "cat": "\/\/*[contains(@class,'s1')]",
+      "detailUrl": "\/\/*[contains(@class,'s2')]\/\/a\/@href"
+    },
+    "bookDetail": {
+      "actionID": "bookDetail",
+      "validConfig": "",
+      "parserID": "DOM",
+      "responseFormatType": "html",
+      "host": "http:\/\/www.mxjtedu.com",
+      "cover": "\/\/img\/@src",
+      "desc": "\/\/*[contains(@class,'m-desc')]",
+      "cat": "\/\/*[contains(@class,'fix')]\/\/p[2]",
+      "author": "\/\/*[contains(@class,'fix')]\/\/p[1]",
+      "lastChapterTitle": "\/\/*[contains(@class,'fix')]\/\/p[6]"
+    },
+    "chapterList": {
+      "actionID": "chapterList",
+      "validConfig": "",
+      "parserID": "DOM",
+      "responseFormatType": "html",
+      "host": "http:\/\/www.mxjtedu.com",
+      "list": "\/\/*[contains(@class,'section-box')][2]\/\/li",
+      "title": "\/\/a",
+      "url": "\/\/a\/@href",
+      "nextPageUrl": "\/\/a[contains(text(),'下一页')]\/@href",
+      "moreKeys": {
+        "maxPage": 200
+      }
+    },
+    "chapterContent": {
+      "actionID": "chapterContent",
+      "validConfig": "",
+      "parserID": "DOM",
+      "responseFormatType": "html",
+      "host": "http:\/\/www.mxjtedu.com",
+      "content": "\/\/*[@class='content']",
+      "nextPageUrl": "\/\/*[contains(@class,'m-bottom-opt')]\/\/a[4]\/@href"
+    },
+    "bookWorld": {
+      "分类": {
+        "actionID": "bookWorld",
+        "validConfig": "",
+        "parserID": "DOM",
+        "responseFormatType": "html",
+        "host": "http:\/\/www.mxjtedu.com",
+        "requestInfo": "@js:\nreturn config.host + params.filters.cat.replace('{{page}}', params.pageIndex);",
+        "list": "\/\/*[contains(@class,'txt-list-row5')]\/\/li[position()>1]",
+        "bookName": "\/\/*[contains(@class,'s2')]",
+        "author": "\/\/*[contains(@class,'s4')]",
+        "cat": "\/\/*[contains(@class,'s1')]",
+        "detailUrl": "\/\/*[contains(@class,'s2')]\/\/a\/@href",
+        "moreKeys": {
+          "pageSize": 30,
+          "requestFilters": "cat\n 玄幻奇幻::\/ksl\/1\/{{page}}.html\n 武侠仙侠::\/ksl\/2\/{{page}}.html\n 都市言情::\/ksl\/3\/{{page}}.html\n 历史军事::\/ksl\/4\/{{page}}.html\n 网游竞技::\/ksl\/5\/{{page}}.html\n 科幻灵异::\/ksl\/6\/{{page}}.html\n 女生频道::\/ksl\/7\/{{page}}.html"
+        }
+      }
+    }    
+  }
+}
