@@ -6,6 +6,6 @@
 3. 顶点小说网 `https://www.2dingdian.net`  
 4. 精华书阁 `https://m.jhsssd.com`  
 5. 梦想家文学 `http://www.mxjtedu.com`  
-6. 速读谷 'https://www.sudugu.org/'
-7. 悠久小说 'http://www.ujxsw.org'
+6. 速读谷 `https://www.sudugu.org`
+7. 悠久小说 `http://www.ujxsw.org`
 
