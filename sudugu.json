@@ -17,7 +17,7 @@
       "author": "\/\/*[contains(text(),'作者')]",
       "cat": "\/\/span",
       "lastChapterTitle": "\/\/li[1]\/\/a",
-      "detailUrl": "\/\/a[1]\/@href",
+      "detailUrl": "\/\/h3\/a\/@href",
       "cover": "\/\/img\/@src"
     },
     "bookDetail": {
