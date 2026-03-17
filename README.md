@@ -1,7 +1,9 @@
 # 香色闺阁书源 xiangseguige
 自制香色闺阁书源  
 如有失效自行修改json再通过xbsrebuild生成新的xbs
-```https://raw.githubusercontent.com/charley008/xiangseguige/refs/heads/main/resources.txt```  
+```
+https://raw.githubusercontent.com/charley008/xiangseguige/refs/heads/main/resources.txt
+```  
 1. 30读书 `https://www.30dushu.com`  
 2. 笔趣阁hk `https://www.biquge.hk`  
 3. 顶点小说网 `https://www.2dingdian.net`  
