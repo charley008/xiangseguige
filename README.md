@@ -11,4 +11,5 @@ https://raw.githubusercontent.com/charley008/xiangseguige/refs/heads/main/resour
 5. 梦想家文学 `http://www.mxjtedu.com`  
 6. 速读谷 `https://www.sudugu.org`
 7. 悠久小说 `http://www.ujxsw.org`
+8. 得奇小说 `https://www.deqixs.co`
 
