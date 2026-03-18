@@ -1,0 +1,183 @@
+{
+    "得奇小说网": {
+        "chapterContent": {
+            "actionID": "chapterContent",
+            "validConfig": "",
+            "content": "\/\/html||@js:\nvar s = String(result || '').trim();\nif(!s) return '';\nvar obj = null;\ntry {\n  obj = JSON.parse(s);\n} catch (e) {\n  var ms = s.match(\/\\{[\\s\\S]*\\}\/);\n  if(ms){\n    try { obj = JSON.parse(ms[0]); } catch (e2) {}\n  }\n}\nvar t = '';\nif(obj && obj.status == 1 && obj.data && obj.data.content){\n  t = String(obj.data.content || '');\n}else{\n  var mc = s.match(\/\\\"content\\\"\\s*:\\s*\\\"([\\s\\S]*?)\\\"\\s*,\\s*\\\"encoding\\\"\/i);\n  if(!mc) mc = s.match(\/\\\"content\\\"\\s*:\\s*\\\"([\\s\\S]*?)\\\"\\s*\\}\/i);\n  if(!mc) return '';\n  t = String(mc[1] || '');\n  t = t.replace(\/\\\\\\\/\/g, '\/').replace(\/\\\\n\/g, '\\n').replace(\/\\\\r\/g, '\\n').replace(\/\\\\t\/g, ' ').replace(\/\\\\\\\"\/g, '\"').replace(\/\\\\\\\\\/g, '\\\\');\n}\nt = t.replace(\/<script[\\s\\S]*?<\\\/script>\/ig, '');\nt = t.replace(\/<style[\\s\\S]*?<\\\/style>\/ig, '');\nt = t.replace(\/<br\\s*\\\/?\\s*>\/ig, '\\n');\nt = t.replace(\/<\\\/p>\/ig, '\\n');\nt = t.replace(\/<\\\/div>\/ig, '\\n');\nt = t.replace(\/<[^>]+>\/g, '');\nt = t.replace(\/&nbsp;|&#160;|\\u00a0\/g, ' ');\nt = t.replace(\/\\r\/g, '\\n');\nt = t.replace(\/[ \\t]+\/g, ' ');\nt = t.replace(\/\\n{3,}\/g, '\\n\\n');\nt = t.replace(\/^.*阅读模式.*$\/gmi, '');\nt = t.replace(\/^.*完整章.*请退出.*$\/gmi, '');\nreturn t.replace(\/^\\s+|\\s+$\/g, '');",
+            "requestInfo": "@js:\nvar u = '';\nif(params && params.lastResponse && params.lastResponse.nextPageUrl){\n  u = params.lastResponse.nextPageUrl;\n}\nif(!u && params && params.queryInfo){\n  u = params.queryInfo.url || params.queryInfo.detailUrl || '';\n}\nif(!u && result){\n  if(typeof result === 'string') u = result;\n  else if(result.url) u = result.url;\n  else if(result.detailUrl) u = result.detailUrl;\n}\nif(!u && params && params.responseUrl){\n  u = params.responseUrl;\n}\nu = String(u || '').split('\\\\\/').join('\/').trim();\nif(!u) return {'url':'','httpHeaders':config.httpHeaders};\nif(!\/^https?:\\\/\\\/\/i.test(u)){\n  if(u.charAt(0) !== '\/') u = '\/' + u;\n  u = config.host + u.replace(\/^\\\/+\/,'');\n}\nif(params && params.lastResponse && params.lastResponse.nextPageUrl){\n  var headers = {};\n  var baseHeaders = config.httpHeaders || {};\n  for(var k in baseHeaders){\n    if(baseHeaders.hasOwnProperty(k)) headers[k] = baseHeaders[k];\n  }\n  headers['X-Requested-With'] = 'XMLHttpRequest';\n  var ref = '';\n  if(params && params.queryInfo){\n    ref = params.queryInfo.url || params.queryInfo.detailUrl || '';\n  }\n  ref = String(ref || '').split('\\\\\/').join('\/').trim();\n  if(ref){\n    if(!\/^https?:\\\/\\\/\/i.test(ref)){\n      if(ref.charAt(0) !== '\/') ref = '\/' + ref;\n      ref = config.host + ref.replace(\/^\\\/+\/, '');\n    }\n    headers['Referer'] = ref;\n  }else{\n    headers['Referer'] = u;\n  }\n  return {'url':u,'httpHeaders':headers};\n}\nvar m = u.match(\/\\\/books\\\/(\\d+)\\\/(\\d+)\\.html\/i);\nif(!m){\n  return {'url':u,'httpHeaders':config.httpHeaders};\n}\nvar jsUrl = config.host + 'scripts\/chapter.js.php?aid=' + m[1] + '&cid=' + m[2] + '&referrer=' + encodeURIComponent(u.split('#')[0]);\nreturn {'url':jsUrl,'httpHeaders':config.httpHeaders};",
+            "title": "@js:\nif(params && params.queryInfo && params.queryInfo.title) return params.queryInfo.title;\nreturn '';",
+            "moreKeys": {
+                "maxPage": 2,
+                "removeHtmlKeys": [
+                    "title",
+                    "content"
+                ]
+            },
+            "host": "https:\/\/www.deqixs.co\/",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "nextPageUrl": "\/\/html||@js:\nvar s = String(result || '');\nif(!s || s.indexOf('chapterToken') < 0) return '';\nvar m1 = s.match(\/chapterToken\\s*=\\s*['\\\"]([^'\\\"]+)['\\\"]\/i);\nvar m2 = s.match(\/timestamp\\s*=\\s*['\\\"]?([0-9]+)['\\\"]?\/i);\nvar m3 = s.match(\/nonce\\s*=\\s*['\\\"]([^'\\\"]+)['\\\"]\/i);\nif(!m1 || !m2 || !m3) return '';\nvar u = '';\nif(params && params.queryInfo){\n  u = params.queryInfo.url || params.queryInfo.detailUrl || '';\n}\nu = String(u || '').split('\\\\\/').join('\/').trim();\nvar m = u.match(\/\\\/books\\\/(\\d+)\\\/(\\d+)\\.html\/i);\nif(!m) return '';\nreturn config.host + 'modules\/article\/ajax2.php?aid=' + m[1] + '&cid=' + m[2] + '&token=' + encodeURIComponent(m1[1]) + '&timestamp=' + encodeURIComponent(m2[1]) + '&nonce=' + encodeURIComponent(m3[1]);"
+        },
+        "enable": 1,
+        "bookDetail": {
+            "cat": "\/\/meta[@property='og:novel:category']\/@content||\/\/ol[contains(@class,'breadcrumb')]\/li[2]\/a\/text()",
+            "responseFormatType": "html",
+            "lastChapterTitle": "\/\/meta[@property='og:novel:latest_chapter_name']\/@content||\/\/a[contains(@class,'bookchapter')]\/text()",
+            "desc": "\/\/meta[@property='og:description']\/@content||\/\/p[contains(@class,'bookintro')]\/text()",
+            "host": "https:\/\/www.deqixs.co\/",
+            "requestInfo": "@js:\nvar u = '';\nif(params && params.queryInfo){\n  u = params.queryInfo.detailUrl || params.queryInfo.url || '';\n}\nif(!u && result){\n  if(typeof result === 'string') u = result;\n  else if(result.detailUrl) u = result.detailUrl;\n  else if(result.url) u = result.url;\n}\nif(!u && params && params.responseUrl){\n  u = params.responseUrl;\n}\nu = String(u || '').split('\\\\\/').join('\/').trim();\nif(!u) return {'url':'','httpHeaders':config.httpHeaders};\nif(!\/^https?:\\\/\\\/\/i.test(u)){\n  if(u.charAt(0) !== '\/') u = '\/' + u;\n  u = config.host + u.replace(\/^\\\/+\/,'');\n}\nreturn {'url':u,'httpHeaders':config.httpHeaders};",
+            "actionID": "bookDetail",
+            "detailUrl": "\/\/link[@rel='canonical']\/@href||\/\/meta[@property='og:novel:read_url']\/@content||@js:\nif(params && params.queryInfo && params.queryInfo.detailUrl) return params.queryInfo.detailUrl;\nif(params && params.queryInfo && params.queryInfo.url) return params.queryInfo.url;\nreturn '';",
+            "cover": "\/\/meta[@property='og:image']\/@content||\/\/div[contains(@class,'bookcover')]\/\/img\/@src||@js:\nif(!result) return '';\nvar u = String(result).trim();\nif(\/^https?:\\\/\\\/\/i.test(u)) return u;\nif(u.indexOf('\/\/') === 0) return 'https:' + u;\nif(u.charAt(0) !== '\/') u = '\/' + u;\nreturn config.host + u.replace(\/^\\\/+\/,'');",
+            "validConfig": "",
+            "parserID": "DOM",
+            "status": "\/\/meta[@property='og:novel:status']\/@content||\/\/p[contains(@class,'booktag')]\/span[contains(@class,'red')]\/text()",
+            "updateTime": "\/\/meta[@property='og:novel:update_time']\/@content||\/\/p[contains(@class,'booktime')]\/text()||@js:return String(result || '').replace(\/^更新时间：\/, '').replace(\/\\s+\/g,' ').trim();"
+        },
+        "bookWorld": {
+            "分类": {
+                "cat": "@js:\nvar m = {\n  '0': '全部',\n  '1': '玄幻小说',\n  '2': '都市小说',\n  '3': '仙侠小说',\n  '4': '历史小说',\n  '5': '科幻小说',\n  '6': '诸天无限',\n  '7': '悬疑小说',\n  '8': '体育小说',\n  '9': '游戏小说',\n  '10': '综合其他'\n};\nvar cid = '0';\nif(params && params.filters && params.filters.category){\n  cid = String(params.filters.category);\n}\nreturn m[cid] || m['0'];",
+                "responseFormatType": "html",
+                "author": "\/\/div[contains(@class,'author')][contains(.,'作者')]\/text()||@js:return String(result || '').replace(\/^作者：\/, '').replace(\/\\s+\/g,' ').trim();",
+                "lastChapterTitle": "\/\/div[contains(@class,'cat')]\/a\/text()||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+                "bookName": "\/\/h4[contains(@class,'bookname')]\/a\/text()||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+                "desc": "\/\/div[contains(@class,'update')]\/text()||@js:return String(result || '').replace(\/^简介：\/, '').replace(\/\\s+\/g,' ').trim();",
+                "host": "https:\/\/www.deqixs.co\/",
+                "requestInfo": "@js:\nvar cid = '0';\nif(params && params.filters && params.filters.category){\n  cid = String(params.filters.category);\n}\nvar page = parseInt(params.pageIndex || 1, 10);\nif(!page || page < 1) page = 1;\nvar url = config.host + 'sort\/' + cid + '\/' + page + '.html';\nreturn {'url': url, 'httpHeaders': config.httpHeaders};",
+                "actionID": "bookWorld",
+                "detailUrl": "\/\/h4[contains(@class,'bookname')]\/a\/@href",
+                "cover": "\/\/img\/@src||@js:\nif(!result) return '';\nvar u = String(result).trim();\nif(\/^https?:\\\/\\\/\/i.test(u)) return u;\nif(u.indexOf('\/\/') === 0) return 'https:' + u;\nif(u.charAt(0) !== '\/') u = '\/' + u;\nreturn config.host + u.replace(\/^\\\/+\/,'');",
+                "validConfig": "",
+                "parserID": "DOM",
+                "list": "\/\/div[contains(@class,'bookbox')]",
+                "moreKeys": {
+                    "_sIndex": 0,
+                    "maxPage": 133,
+                    "pageSize": 30,
+                    "removeHtmlKeys": [
+                        "bookName",
+                        "author",
+                        "lastChapterTitle",
+                        "desc"
+                    ],
+                    "requestFilters": [
+                        {
+                            "key": "category",
+                            "items": [
+                                {
+                                    "title": "全部",
+                                    "value": "0"
+                                },
+                                {
+                                    "title": "玄幻小说",
+                                    "value": "1"
+                                },
+                                {
+                                    "title": "都市小说",
+                                    "value": "2"
+                                },
+                                {
+                                    "title": "仙侠小说",
+                                    "value": "3"
+                                },
+                                {
+                                    "title": "历史小说",
+                                    "value": "4"
+                                },
+                                {
+                                    "title": "科幻小说",
+                                    "value": "5"
+                                },
+                                {
+                                    "title": "诸天无限",
+                                    "value": "6"
+                                },
+                                {
+                                    "title": "悬疑小说",
+                                    "value": "7"
+                                },
+                                {
+                                    "title": "体育小说",
+                                    "value": "8"
+                                },
+                                {
+                                    "title": "游戏小说",
+                                    "value": "9"
+                                },
+                                {
+                                    "title": "综合其他",
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "status": "",
+                "updateTime": ""
+            }
+        },
+        "sourceUrl": "https:\/\/www.deqixs.co\/",
+        "sourceType": "text",
+        "weight": 9999,
+        "sourceName": "得奇小说网",
+        "httpHeaders": {
+            "Referer": "https:\/\/www.deqixs.co\/",
+            "User-Agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/124.0.0.0 Safari\/537.36"
+        },
+        "miniAppVersion": "2.53.2",
+        "lastModifyTime": "1772609241",
+        "searchBook": {
+            "cat": "\/\/meta[@property='og:novel:category']\/@content||\/\/ol[contains(@class,'breadcrumb')]\/li[2]\/a\/text()||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+            "responseFormatType": "html",
+            "author": "\/\/div[contains(@class,'author')][contains(.,'作者')]\/text()||\/\/meta[@property='og:novel:author']\/@content||\/\/p[contains(@class,'booktag')]\/a[contains(@href,'\/author\/')]\/text()||@js:return String(result || '').replace(\/^作者：\/, '').replace(\/\\s+\/g,' ').trim();",
+            "lastChapterTitle": "\/\/div[contains(@class,'cat')]\/a\/text()||\/\/meta[@property='og:novel:latest_chapter_name']\/@content||\/\/a[contains(@class,'bookchapter')]\/text()||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+            "bookName": "\/\/h4[contains(@class,'bookname')]\/a\/text()||\/\/h1[contains(@class,'booktitle')]\/text()||\/\/meta[@property='og:novel:book_name']\/@content||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+            "url": "\/\/h4[contains(@class,'bookname')]\/a\/@href||@js:\nvar u = String(result || '').trim();\nif(!u && params && params.responseUrl) u = String(params.responseUrl).trim();\nif(!u) return '';\nif(\/^https?:\\\/\\\/\/i.test(u)) return u;\nif(u.charAt(0) !== '\/') u = '\/' + u;\nreturn config.host + u.replace(\/^\\\/+\/,'');",
+            "desc": "\/\/div[contains(@class,'update')]\/text()||\/\/meta[@property='og:description']\/@content||\/\/p[contains(@class,'bookintro')]\/text()||@js:return String(result || '').replace(\/^简介：\/, '').replace(\/\\s+\/g,' ').trim();",
+            "host": "https:\/\/www.deqixs.co\/",
+            "requestInfo": "@js:\nvar kw = encodeURIComponent(String(params.keyWord || ''));\nvar url = config.host + 'modules\/article\/search.php?searchkey=' + kw + '&searchtype=all';\nreturn {'url': url, 'httpHeaders': config.httpHeaders};",
+            "actionID": "searchBook",
+            "detailUrl": "\/\/h4[contains(@class,'bookname')]\/a\/@href||@js:\nvar u = String(result || '').trim();\nif(!u && params && params.responseUrl) u = String(params.responseUrl).trim();\nif(!u) return '';\nif(\/^https?:\\\/\\\/\/i.test(u)) return u;\nif(u.charAt(0) !== '\/') u = '\/' + u;\nreturn config.host + u.replace(\/^\\\/+\/,'');",
+            "cover": "\/\/img\/@src||\/\/meta[@property='og:image']\/@content||@js:\nif(!result) return '';\nvar u = String(result).trim();\nif(\/^https?:\\\/\\\/\/i.test(u)) return u;\nif(u.indexOf('\/\/') === 0) return 'https:' + u;\nif(u.charAt(0) !== '\/') u = '\/' + u;\nreturn config.host + u.replace(\/^\\\/+\/,'');",
+            "validConfig": "",
+            "parserID": "DOM",
+            "list": "\/\/div[contains(@class,'bookbox')] | \/\/div[contains(@class,'book') and contains(@class,'pt10') and .\/\/h1[contains(@class,'booktitle')]]",
+            "moreKeys": {
+                "pageSize": 20,
+                "maxPage": 1,
+                "removeHtmlKeys": [
+                    "bookName",
+                    "url",
+                    "author",
+                    "cat",
+                    "status",
+                    "lastChapterTitle",
+                    "updateTime",
+                    "desc"
+                ]
+            },
+            "status": "\/\/meta[@property='og:novel:status']\/@content||\/\/p[contains(@class,'booktag')]\/span[contains(@class,'red')]\/text()||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+            "updateTime": "\/\/meta[@property='og:novel:update_time']\/@content||\/\/p[contains(@class,'booktime')]\/text()||@js:return String(result || '').replace(\/^更新时间：\/, '').replace(\/\\s+\/g,' ').trim();"
+        },
+        "chapterList": {
+            "responseFormatType": "html",
+            "url": "\/\/@href",
+            "host": "https:\/\/www.deqixs.co\/",
+            "requestInfo": "@js:\nvar u = '';\nif(params && params.lastResponse && params.lastResponse.nextPageUrl) u = params.lastResponse.nextPageUrl;\nif(!u && params && params.queryInfo) u = params.queryInfo.detailUrl || params.queryInfo.url || '';\nif(!u && result){\n  if(typeof result === 'string') u = result;\n  else if(result.detailUrl) u = result.detailUrl;\n  else if(result.url) u = result.url;\n}\nif(!u && params && params.responseUrl){\n  u = params.responseUrl;\n}\nu = String(u || '').split('\\\\\/').join('\/').trim();\nif(!u) return {'url':'','httpHeaders':config.httpHeaders};\nif(!\/^https?:\\\/\\\/\/i.test(u)){\n  if(u.charAt(0) !== '\/') u = '\/' + u;\n  u = config.host + u.replace(\/^\\\/+\/,'');\n}\nreturn {'url':u,'httpHeaders':config.httpHeaders};",
+            "actionID": "chapterList",
+            "title": "\/\/text()||@js:return String(result || '').replace(\/\\s+\/g,' ').trim();",
+            "detailUrl": "\/\/@href",
+            "validConfig": "",
+            "parserID": "DOM",
+            "list": "\/\/div[@id='list-chapterAll']\/dd\/a",
+            "moreKeys": {
+                "maxPage": 1,
+                "removeHtmlKeys": [
+                    "title",
+                    "updateTime"
+                ]
+            },
+            "updateTime": "\/\/meta[@property='og:novel:update_time']\/@content"
+        }
+    }
+}
