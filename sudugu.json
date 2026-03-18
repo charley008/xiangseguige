@@ -3,17 +3,13 @@
         "chapterContent": {
             "actionID": "chapterContent",
             "validConfig": "",
-            "content": "\/\/*[contains(@class,'con')]",
+            "content": "\/\/*[contains(@class,'con')]\/p",
             "host": "https:\/\/www.sudugu.org",
             "responseFormatType": "html",
             "parserID": "DOM",
             "nextPageUrl": "\/\/a[text()='下一页']\/@href",
              "moreKeys": {
-                "maxPage": 20,
-                "removeHtmlKeys": [
-                "title",
-                "content"
-                ]
+                "maxPage": 4,
             }
         },
         "enable": 1,
