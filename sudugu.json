@@ -1,0 +1,80 @@
+{
+    "速读谷": {
+        "chapterContent": {
+            "actionID": "chapterContent",
+            "validConfig": "",
+            "content": "\/\/*[contains(@class,'con')]",
+            "host": "https:\/\/www.sudugu.org",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "nextPageUrl": "\/\/a[text()='下一页']\/@href"
+        },
+        "enable": 1,
+        "bookDetail": {
+            "actionID": "bookDetail",
+            "validConfig": "",
+            "detailUrl": "@js: return params.requestInfo;",
+            "host": "https:\/\/www.sudugu.org",
+            "cover": "\/\/*[contains(@class,'item')]\/\/img\/@src",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "desc": "\/\/*[contains(@class,'des')][1]"
+        },
+        "bookWorld": {
+            "分类发现": {
+                "responseFormatType": "html",
+                "author": "\/\/*[contains(text(),'作者')]",
+                "lastChapterTitle": "\/\/ul\/li[1]\/\/a",
+                "bookName": "\/\/h3\/\/a",
+                "host": "https:\/\/www.sudugu.org",
+                "requestInfo": "@js:\nreturn config.host + '\/' + params.filters.cat.replace('{{page}}', params.pageIndex);",
+                "actionID": "bookWorld",
+                "detailUrl": "\/\/h3\/a\/@href",
+                "cover": "\/\/img\/@src",
+                "validConfig": "",
+                "parserID": "DOM",
+                "list": "\/\/*[contains(@class,'item')]",
+                "moreKeys": {
+                    "pageSize": 20,
+                    "requestFilters": "cat\n 排行榜::paihang\/{{page}}.html\n 完结小说::wanjie\/{{page}}.html\n 最新小说::zuixin\/{{page}}.html\n 玄幻小说::xuanhuan\/{{page}}.html\n  仙侠小说::xianxia\/{{page}}.html\n 都市小说::dushi\/{{page}}.html\n 历史小说::lishi\/{{page}}.html\n 军事小说::junshi\/{{page}}.html\n 科幻小说::kehuan\/{{page}}.html\n 言情小说::yanqing\/{{page}}.html\n 庆小说::qing\/{{page}}.html\n 游戏小说::youxi\/{{page}}.html\n 奇幻小说::qihuan\/{{page}}.html\n 武侠小说::wuxia\/{{page}}.html\n "
+                }
+            }
+        },
+        "sourceUrl": "https:\/\/www.sudugu.org",
+        "sourceType": "text",
+        "weight": "100",
+        "sourceName": "速读谷",
+        "miniAppVersion": "2.53.2",
+        "lastModifyTime": "1773812842.944305",
+        "searchBook": {
+            "cat": "\/\/span",
+            "responseFormatType": "html",
+            "author": "\/\/*[contains(text(),'作者')]",
+            "lastChapterTitle": "\/\/li[1]\/\/a",
+            "bookName": "\/\/h3\/\/a",
+            "requestInfo": "https:\/\/www.sudugu.org\/i\/sor.aspx?key=%@keyWord&p=%@pageIndex",
+            "host": "https:\/\/www.sudugu.org",
+            "actionID": "searchBook",
+            "detailUrl": "\/\/h3\/a\/@href",
+            "cover": "\/\/img\/@src",
+            "validConfig": "",
+            "parserID": "DOM",
+            "list": "\/\/*[contains(@class,'item')]"
+        },
+        "chapterList": {
+            "nextPageUrl": "\/\/a[contains(text(),'下一页')]\/@href",
+            "JSParser": "function functionName(config, params, result) {\r\nlet n = result.nextPageUrl;\r\nif (n && n.indexOf('http') === -1) {\r\nlet base = params.responseUrl || \"\";\r\nlet dir = base.substring(0, base.lastIndexOf('\/') + 1);\r\nresult.nextPageUrl = dir + n.split('#')[0];\r\n}\r\nreturn result;\r\n}",
+            "responseFormatType": "html",
+            "url": "\/\/a\/@href",
+            "title": "\/\/a",
+            "actionID": "chapterList",
+            "moreKeys": {
+                "maxPage": 200
+            },
+            "host": "https:\/\/www.sudugu.org",
+            "validConfig": "",
+            "list": "\/\/*[contains(@class,'dir')]\/\/li",
+            "parserID": "DOM"
+        }
+    }
+}
