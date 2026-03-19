@@ -50,8 +50,7 @@
       "parserID": "DOM",
       "responseFormatType": "html",
       "host": "https:\/\/m.jhsssd.com",
-      "content": "\/\/*[@id='nr1']",
-      "nextPageUrl": "\/\/*[@id='pb_next']\/@href",
+      "content": "\/\/*[@id='nr1']||@js:\nvar txt = String(result || '');\n\ntxt = txt.replace(/阅读提示：为防止内容获取不全，请勿使用浏览器阅读模式。?/g, '');\n\n// 清理多余空行\n txt = txt.replace(/\\n{2,}/g,'\\n');\n\n return txt;",
       "nextPageUrl": "\/\/a[contains(., \"下一页\")]\/@href",
       "moreKeys": {
         "maxPage": 8
