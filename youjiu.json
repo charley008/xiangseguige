@@ -67,9 +67,7 @@
       "parserID": "DOM",
       "responseFormatType": "html",
       "host": "http:\/\/www.ujxsw.org",
-      "content": "\/\/*[@class='read-content']",
-      "//净化": "帮你把源里的替换规则翻译成了香色的正则，去除了干扰文字",
-      "replaceRegex": "悠久小说网全文字更新,牢记网址:www.ujxsw.org|最新网址：www.ujxsw.org|.*悠久小说.*|【悠久小説網ωωω.ＵＪХＳw.ｎｅｔ】，免费小说无弹窗免费阅读！|全集TXT电子书免费下载！|佰度搜索 【悠久小說網 ＷＷＷ.ＵＪХＳw．ＮＥＴ】"
+      "content": "//*[@class='read-content']||@js:\nvar txt = String(result || '');\n\n// 去掉固定广告\ntxt = txt.replace(/最新网址：www\\.ujxsw\\.org/g, '');\n\ntxt = txt.replace(/【悠久小[说説]網.*?免费小说无弹窗免费阅读！?/g, '');\n\n txt = txt.replace(/佰度搜索.*?全集TXT电子书免费下载！?/g, '');\n\n// 清理多余空行\n txt = txt.replace(/\\n{2,}/g,'\\n');\n\n return txt;"
     }
   }
 }
