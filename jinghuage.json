@@ -41,7 +41,7 @@
       "url": "\/\/@href",
       "nextPageUrl": "\/\/a[contains(text(),'下一页')]\/@href",
       "moreKeys": {
-        "maxPage": 1000
+        "maxPage": 150
       }
     },
     "chapterContent": {
@@ -52,7 +52,10 @@
       "host": "https:\/\/m.jhsssd.com",
       "content": "\/\/*[@id='nr1']",
       "nextPageUrl": "\/\/*[@id='pb_next']\/@href",
-      "replaceRegex": "##阅读提示：为防止内容获取不全，请勿使用浏览器阅读模式。.*|本章未完，请点击下一页继续阅读》》.*"
+      "nextPageUrl": "\/\/a[contains(., \"下一页\")]\/@href",
+      "moreKeys": {
+        "maxPage": 8
+      }
     },
     "bookWorld": {
       "分类发现": {
