@@ -1,0 +1,135 @@
+{
+    "精华书阁": {
+        "chapterContent": {
+            "actionID": "chapterContent",
+            "validConfig": "",
+            "content": "\/\/*[@id='nr1']||@js:\nvar txt = String(result || '');\n\ntxt = txt.replace(\/阅读提示：为防止内容获取不全，请勿使用浏览器阅读模式。?\/g, '');\n\n\/\/ 清理多余空行\n txt = txt.replace(\/\\n{2,}\/g,'\\n');\n\n return txt;",
+            "moreKeys": {
+                "maxPage": 8
+            },
+            "host": "https:\/\/m.jhssd.com",
+            "httpHeaders": {
+                "referer": "https:\/\/m.jhssd.com\/",
+                "cookie": "waf_sc=5889647726;sex=boy",
+                "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+            },
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "nextPageUrl": "\/\/a[contains(., \"下一页\")]\/@href"
+        },
+        "enable": 1,
+        "bookDetail": {
+            "actionID": "bookDetail",
+            "validConfig": "",
+            "detailUrl": "@js: return params.requestInfo;",
+            "host": "https:\/\/m.jhssd.com",
+            "httpHeaders": {
+                "referer": "https:\/\/m.jhssd.com\/",
+                "cookie": "waf_sc=5889647726;sex=boy",
+                "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+            },
+            "cover": "\/\/img\/@src",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "desc": "\/\/div[contains(@class,'intro_info')]\/\/text()"
+        },
+        "bookWorld": {
+            "分类": {
+                "responseFormatType": "html",
+                "author": "\/\/*[contains(@class,'xsm')][1]",
+                "bookName": "\/\/*[contains(@class,'xsm')][1]\/\/a",
+                "httpHeaders": {
+                    "referer": "https:\/\/m.jhssd.com\/",
+                    "cookie": "waf_sc=5889647726;sex=boy",
+                    "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+                },
+                "host": "https:\/\/m.jhssd.com",
+                "requestInfo": "@js:\nreturn config.host + params.filters.cat.replace('{{page}}', params.pageIndex);",
+                "actionID": "bookWorld",
+                "detailUrl": "\/\/li[1]\/\/a\/@href",
+                "cover": "\/\/img\/@src",
+                "validConfig": "",
+                "parserID": "DOM",
+                "list": "\/\/section[@id='list']\/\/ul[@class='xbk']",
+                "moreKeys": {
+                    "pageSize": 3,
+                    "requestFilters": "cat\n 玄幻::\/list\/1_{{page}}.html\n 修真::\/list\/2_{{page}}.html\n 都市::\/list\/3_{{page}}.html\n 穿越::\/list\/4_{{page}}.html\n 网游::\/list\/5_{{page}}.html\n 科幻::\/list\/6_{{page}}.html\n 灵异::\/list\/7_{{page}}.html\n 女生::\/list\/8_{{page}}.html\n 其他::\/list\/9_{{page}}.html\n 完本::\/wanben_{{page}}.html"
+                },
+                "_sIndex": 0
+            },
+            "排行榜": {
+                "author": "\/\/*[contains(@class,'xsm')][1]\/\/a",
+                "responseFormatType": "html",
+                "bookName": "\/\/*[contains(@class,'xsm')][1]\/\/a",
+                "httpHeaders": {
+                    "referer": "https:\/\/m.jhssd.com\/",
+                    "cookie": "waf_sc=5889647726;sex=boy",
+                    "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+                },
+                "requestInfo": "@js:\nreturn config.host + params.filters.cat.replace('{{page}}', params.pageIndex);",
+                "host": "https:\/\/m.jhssd.com",
+                "actionID": "bookWorld",
+                "moreKeys": {
+                    "pageSize": 3,
+                    "requestFilters": "cat\n 总点击::\/Ranking_allvisit\/{{page}}.html\n 日点击::\/Ranking_dayvisit\/{{page}}.html\n 周点击::\/Ranking_weekvisit\/{{page}}.html\n 月点击::\/Ranking_monthvisit\/{{page}}.html\n 总推荐::\/Ranking_allvote\/{{page}}.html\n 周推荐::\/Ranking_weekvote\/{{page}}.html\n 月推荐::\/Ranking_monthvote\/{{page}}.html\n 收藏推荐::\/Ranking_goodnum\/{{page}}.html\n 字数排行::\/Ranking_size\/{{page}}.html\n 最新入库::\/Ranking_postdate\/{{page}}.html\n 最近更新::\/Ranking_lastupdate\/{{page}}.html\n 新书榜单::\/Ranking_goodnew\/{{page}}.html"
+                },
+                "cover": "\/\/img\/@src",
+                "validConfig": "",
+                "list": "\/\/section[@id='Ranking']\/\/ul[@class='xbk']",
+                "_sIndex": 1,
+                "parserID": "DOM",
+                "detailUrl": "\/\/li[1]\/\/a\/@href"
+            }
+        },
+        "sourceUrl": "https:\/\/m.jhssd.com",
+        "sourceType": "text",
+        "weight": "100",
+        "sourceName": "精华书阁",
+        "httpHeaders": {
+            "referer": "https:\/\/m.jhssd.com\/",
+            "cookie": "waf_sc=5889647726;sex=boy",
+            "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+        },
+        "miniAppVersion": "2.53.2",
+        "lastModifyTime": "1774022446.498712",
+        "searchBook": {
+            "cat": "\/\/div[@class='cat']",
+            "responseFormatType": "html",
+            "author": "\/\/div[@class='author']",
+            "lastChapterTitle": "\/\/div[@class='update']\/\/a",
+            "bookName": "\/\/h4[@class='bookname']\/\/a",
+            "httpHeaders": {
+                "referer": "https:\/\/m.jhssd.com\/",
+                "cookie": "waf_sc=5889647726;sex=boy",
+                "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+            },
+            "requestInfo": "https:\/\/m.jhsssd.com\/search.html?ie=utf-8&word=%@keyWord",
+            "host": "https:\/\/m.jhssd.com",
+            "actionID": "searchBook",
+            "detailUrl": "\/\/h4[@class='bookname']\/\/a\/@href",
+            "cover": "\/\/div[@class='bookimg']\/\/img\/@src",
+            "validConfig": "",
+            "parserID": "DOM",
+            "list": "\/\/div[contains(@class,'searchbook')]"
+        },
+        "chapterList": {
+            "actionID": "chapterList",
+            "validConfig": "",
+            "url": "\/\/@href",
+            "title": "\/\/a",
+            "moreKeys": {
+                "maxPage": 150
+            },
+            "host": "https:\/\/m.jhssd.com",
+            "httpHeaders": {
+                "referer": "https:\/\/m.jhssd.com\/",
+                "cookie": "waf_sc=5889647726;sex=boy",
+                "User-Agent": "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1"
+            },
+            "list": "(\/\/ul)[2]\/\/li",
+            "responseFormatType": "html",
+            "parserID": "DOM",
+            "nextPageUrl": "\/\/a[contains(text(),'下一页')]\/@href"
+        }
+    }
+}
